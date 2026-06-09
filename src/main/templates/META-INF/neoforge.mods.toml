@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/henkdude1/create-sa-portabledrillfix/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''${mod_description}'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="${neo_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+# Optional: the fix only ever activates when a configured trigger enchantment is present,
+# so it is safe to keep installed without Create: Stuff 'N Additions.
+[[dependencies.${mod_id}]]
+modId="create_sa"
+type="optional"
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
