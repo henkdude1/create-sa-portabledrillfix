@@ -10,9 +10,9 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.server.level.ClientInformation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.network.ClientInformation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -32,7 +32,7 @@ import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
  * destroys a neighbor via {@code Level.destroyBlock} with no tool. With the fix, the
  * neighbor must drop the silk-touched item (stone), not the tool-less drop (cobblestone).
  */
-@EventBusSubscriber(modid = CreateSaDrillFix.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = CreateSaDrillFix.MOD_ID)
 public final class AoeDropsGameTests {
 
     private AoeDropsGameTests() {}
