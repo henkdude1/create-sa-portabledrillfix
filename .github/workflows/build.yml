@@ -23,8 +23,13 @@ jobs:
       - name: Build
         run: ./gradlew build --stacktrace
 
-      - name: Game test server smoke test
-        run: ./gradlew runGameTestServer --stacktrace
+      - name: Game test server
+        # The gradle task can exit 0 even when the server fails to launch, so
+        # explicitly require the gametest success marker in the log.
+        run: |
+          set -o pipefail
+          ./gradlew runGameTestServer --stacktrace 2>&1 | tee gametest.log
+          grep -q "required tests passed" gametest.log
         timeout-minutes: 15
 
       - name: Upload mod jar

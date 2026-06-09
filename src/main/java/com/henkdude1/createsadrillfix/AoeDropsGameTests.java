@@ -35,7 +35,8 @@ import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
 @EventBusSubscriber(modid = CreateSaDrillFix.MOD_ID)
 public final class AoeDropsGameTests {
 
-    private AoeDropsGameTests() {}
+    // The game test runner instantiates this class reflectively via a public no-arg
+    // constructor, even for static test methods — do not add a private constructor.
 
     @SubscribeEvent
     public static void registerTests(RegisterGameTestsEvent event) {
@@ -43,7 +44,7 @@ public final class AoeDropsGameTests {
     }
 
     @PrefixGameTestTemplate(false)
-    @GameTest(template = "create_sa_drillfix:empty", timeoutTicks = 100)
+    @GameTest(template = "empty", templateNamespace = CreateSaDrillFix.MOD_ID, timeoutTicks = 100)
     public static void aoeDropsUseToolEnchantments(GameTestHelper helper) {
         ServerLevel level = helper.getLevel();
 
